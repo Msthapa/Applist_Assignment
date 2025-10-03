@@ -44,7 +44,7 @@ class ApplistFragment : Fragment() {
 
         lifecycleScope.launch {
             viewModel.apps.collect { appList ->
-                adapter.submitList(appList)
+               setDataInAdapter(appList)
                 currentAdapterList = appList
 
             }
@@ -91,8 +91,20 @@ class ApplistFragment : Fragment() {
         val currentList = (currentAdapterList as List<AppDetailItem>)
         val filtered = if (query.isNullOrBlank()) currentList
         else currentList.filter { it.name.contains(query, ignoreCase = true) }
+        setDataInAdapter(filtered)
+    }
 
-        adapter.submitList(filtered)
+    private fun setDataInAdapter(appList : List<AppDetailItem>) {
+        if(!appList.isNullOrEmpty() ){
+            binding?.searchView?.visibility = View.VISIBLE
+            binding?.errorView?.visibility = View.GONE
+        }else{
+            binding?.searchView?.visibility = View.GONE
+            binding?.errorView?.visibility = View.VISIBLE
+
+        }
+        adapter.submitList(appList)
+
     }
 
 }

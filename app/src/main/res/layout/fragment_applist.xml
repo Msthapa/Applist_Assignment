@@ -36,5 +36,20 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <TextView
+        android:id="@+id/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/dp_16"
+        android:textSize="@dimen/sp_26"
+        android:textColor="@color/charcol"
+        android:text="@string/no_data_available"
+        android:textAlignment="center"
+        android:visibility="gone"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
