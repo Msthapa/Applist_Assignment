@@ -65,6 +65,10 @@ dependencies {
     implementation(libs.bumptech.glide)
     kapt(libs.bumptech.glide.compiler)
 
+    //fragment/activity ktx
+    implementation(libs.activity.ktx)
+    implementation(libs.fragment.ktx)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

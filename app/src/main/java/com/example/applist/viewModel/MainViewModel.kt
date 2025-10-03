@@ -1,4 +1,13 @@
 package com.example.applist.viewModel
 
-class MainViewModel {
+import androidx.lifecycle.ViewModel
+import com.example.applist.usecase.GetAppsListUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val getAppsListUseCase: GetAppsListUseCase
+): ViewModel() {
+
 }
