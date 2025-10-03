@@ -74,6 +74,9 @@ dependencies {
     implementation(libs.androidx.nav.fragment)
     implementation(libs.androidx.nav.ui)
 
+    //pull to refresh
+    implementation(libs.androidx.swiperefreshlayout)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

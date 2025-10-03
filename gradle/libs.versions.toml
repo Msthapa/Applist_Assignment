@@ -16,6 +16,7 @@ glide = "4.16.0"
 activityKtx = "1.9.2"
 fragmentKtx = "1.8.2"
 nav = "2.7.7"
+swiperefreshlayout = "1.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,6 +41,7 @@ activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activ
 fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
 androidx-nav-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "nav" }
 androidx-nav-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "nav" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
