@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.androidx.nav.safeargs)
 }
 
 android {
@@ -68,6 +69,10 @@ dependencies {
     //fragment/activity ktx
     implementation(libs.activity.ktx)
     implementation(libs.fragment.ktx)
+
+    //navigation
+    implementation(libs.androidx.nav.fragment)
+    implementation(libs.androidx.nav.ui)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
