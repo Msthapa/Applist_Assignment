@@ -48,8 +48,22 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    //hilt-dependency-injection
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    //room database
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+
+    //retrofit
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.converter.gson)
+
+    //Glide
+    implementation(libs.bumptech.glide)
+    kapt(libs.bumptech.glide.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
