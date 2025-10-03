@@ -2,4 +2,6 @@
     <string name="app_name">AppList</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name ="item_app_name">Name:</string>
+    <string name ="item_dev_name">Dev:</string>
 </resources>
