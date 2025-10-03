@@ -55,8 +55,8 @@ dependencies {
 
     //room database
     implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
 
     //retrofit
     implementation(libs.squareup.retrofit)
