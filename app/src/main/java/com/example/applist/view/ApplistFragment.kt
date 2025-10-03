@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -46,16 +47,23 @@ class ApplistFragment : Fragment() {
             }
         }
 
+        binding?.swipeRefresh?.setOnRefreshListener {
+            viewModel.refreshDataOnSwipe(){ // Trigger forceful refresh
+                binding?.swipeRefresh?.isRefreshing = false // stop the loading animation after refresh
+                Toast.makeText(requireContext(),"Data Refreshed!",Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
 
     private fun navigateToDetailPage(item : AppDetailItem) {
-      val navigationAction = ApplistFragmentDirections.appListToDetailPage(
+      val navAction = ApplistFragmentDirections.appListToDetailPage(
           appName = item.name,
           appImage = item.artworkUrl100,
           releaseDate = item.releaseDate,
           playStoreUrl = item.url
       )
-        findNavController().navigate(directions = navigationAction)
+        findNavController().navigate(directions = navAction)
     }
 
 }
