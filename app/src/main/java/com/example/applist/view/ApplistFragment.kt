@@ -55,7 +55,7 @@ class ApplistFragment : Fragment() {
           releaseDate = item.releaseDate,
           playStoreUrl = item.url
       )
-        findNavController().navigate(navigationAction)
+        findNavController().navigate(directions = navigationAction)
     }
 
 }

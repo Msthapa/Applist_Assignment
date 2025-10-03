@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.applist.R
 import com.example.applist.databinding.FragmentAppDetailBinding
 
@@ -39,6 +40,8 @@ class AppDetailFragment : Fragment() {
          Glide.with(this)
              .load(imageUrl)
              .placeholder(R.drawable.ic_launcher_background)
+             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC) // for caching images
+             .skipMemoryCache(false) // using memory to cache
              .into(it.appImage)
 
          it.appName.text  = buildString {
