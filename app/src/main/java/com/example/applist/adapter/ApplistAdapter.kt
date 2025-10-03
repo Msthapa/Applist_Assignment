@@ -21,7 +21,7 @@ class ApplistAdapter(private val onItemClick: (AppDetailItem) -> Unit):
             val context = binding.root.context
             Glide.with(context)
               .load(item.artworkUrl100)
-              .transform(RoundedCorners(24))
+              .transform(RoundedCorners(32))
               .placeholder(R.drawable.ic_launcher_background)
               .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC) // for caching images
               .skipMemoryCache(false) // using memory to cache
