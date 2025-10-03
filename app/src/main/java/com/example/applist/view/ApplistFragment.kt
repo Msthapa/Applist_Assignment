@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -23,6 +24,7 @@ class ApplistFragment : Fragment() {
     private val viewModel: ApplistFragmentViewModel by viewModels()
     private var  binding: FragmentApplistBinding? = null
     private lateinit var adapter : ApplistAdapter
+    private var currentAdapterList : List<AppDetailItem> ?= null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,16 +45,21 @@ class ApplistFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.apps.collect { appList ->
                 adapter.submitList(appList)
+                currentAdapterList = appList
 
             }
         }
 
         binding?.swipeRefresh?.setOnRefreshListener {
             viewModel.refreshDataOnSwipe(){ // Trigger forceful refresh
+                binding?.searchView?.setQuery("", false) // reset search-view
+                binding?.searchView?.clearFocus()
+                binding?.searchView?.isIconified = true
                 binding?.swipeRefresh?.isRefreshing = false // stop the loading animation after refresh
                 Toast.makeText(requireContext(),"Data Refreshed!",Toast.LENGTH_SHORT).show()
             }
         }
+        initialiseSearchApps()
 
     }
 
@@ -64,6 +71,28 @@ class ApplistFragment : Fragment() {
           playStoreUrl = item.url
       )
         findNavController().navigate(directions = navAction)
+    }
+
+    private fun initialiseSearchApps() {
+        binding?.searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                filterList(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText)
+                return true
+            }
+        })
+    }
+
+    private fun filterList(query: String?) {
+        val currentList = (currentAdapterList as List<AppDetailItem>)
+        val filtered = if (query.isNullOrBlank()) currentList
+        else currentList.filter { it.name.contains(query, ignoreCase = true) }
+
+        adapter.submitList(filtered)
     }
 
 }
