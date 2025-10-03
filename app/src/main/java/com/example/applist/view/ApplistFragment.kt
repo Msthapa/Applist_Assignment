@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.applist.R
 import com.example.applist.adapter.ApplistAdapter
 import com.example.applist.databinding.FragmentApplistBinding
+import com.example.applist.model.data.AppDetailItem
 import com.example.applist.viewModel.ApplistFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -31,7 +33,9 @@ class ApplistFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = ApplistAdapter()
+        adapter = ApplistAdapter(){ item ->
+            navigateToDetailPage(item)
+        }
         binding?.rvAppList?.layoutManager = LinearLayoutManager(requireContext())
         binding?.rvAppList?.adapter = adapter
 
@@ -42,6 +46,16 @@ class ApplistFragment : Fragment() {
             }
         }
 
+    }
+
+    private fun navigateToDetailPage(item : AppDetailItem) {
+      val navigationAction = ApplistFragmentDirections.appListToDetailPage(
+          appName = item.name,
+          appImage = item.artworkUrl100,
+          releaseDate = item.releaseDate,
+          playStoreUrl = item.url
+      )
+        findNavController().navigate(navigationAction)
     }
 
 }

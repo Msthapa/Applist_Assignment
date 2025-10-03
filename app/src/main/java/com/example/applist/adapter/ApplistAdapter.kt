@@ -10,7 +10,8 @@ import com.example.applist.R
 import com.example.applist.databinding.ItemAppListBinding
 import com.example.applist.model.data.AppDetailItem
 
-class ApplistAdapter: ListAdapter<AppDetailItem, ApplistAdapter.ApplistViewholder>(DiffCallback()) {
+class ApplistAdapter(private val onItemClick: (AppDetailItem) -> Unit):
+    ListAdapter<AppDetailItem, ApplistAdapter.ApplistViewholder>(DiffCallback()) {
 
     inner class ApplistViewholder(val binding: ItemAppListBinding): RecyclerView.ViewHolder(binding.root) {
 
@@ -21,8 +22,18 @@ class ApplistAdapter: ListAdapter<AppDetailItem, ApplistAdapter.ApplistViewholde
               .placeholder(R.drawable.ic_launcher_background)
               .into(binding.appIcon)
 
-            binding.appName.text = context.getString(R.string.item_app_name) + " ${item.name}"
-            binding.devName.text = context.getString(R.string.item_dev_name) + " ${item.artistName}"
+            binding.appName.text = buildString {
+                append(context.getString(R.string.item_app_name))
+                append("  ${item.name}")
+            }
+            binding.devName.text = buildString {
+                append(context.getString(R.string.item_dev_name))
+                append("  ${item.artistName}")
+            }
+
+            binding.root.setOnClickListener {
+                onItemClick(item)   // click callback for fragment
+            }
         }
     }
 
