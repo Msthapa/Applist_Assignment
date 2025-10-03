@@ -1,18 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
     app:startDestination="@id/applistFragment">
 
     <fragment
         android:id="@+id/applistFragment"
         android:name="com.example.applist.view.ApplistFragment"
-        android:label="First Fragment">
+        tools:layout="@layout/fragment_applist"
+        android:label="App List Fragment">
 
-        <!--<action
+        <action
             android:id="@+id/action_firstFragment_to_secondFragment"
-            app:destination="@id/" />-->
+            app:destination="@id/appDetailFragment"
+            />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/appDetailFragment"
+        android:name="com.example.applist.view.AppDetailFragment"
+        tools:layout="@layout/fragment_app_detail"
+        android:label="Detail Fragment">
+        <argument
+            android:name="appName"
+            app:argType="string" />
+
+        <argument
+            android:name="appImage"
+            app:argType="string" />
+
+        <argument
+            android:name="releaseDate"
+            app:argType="string" />
+
+        <argument
+            android:name="playStoreUrl"
+            app:argType="string" />
+
+    </fragment>
+
+
 
 </navigation>

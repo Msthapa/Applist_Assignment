@@ -1,7 +1,6 @@
 package com.example.applist.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,7 +37,6 @@ class ApplistFragment : Fragment() {
 
         lifecycleScope.launch {
             viewModel.apps.collect { appList ->
-                Log.d("MsThapa", "applist = ${appList.size}")
                 adapter.submitList(appList)
 
             }
