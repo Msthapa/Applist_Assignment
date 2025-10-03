@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object AppDatabaseModule {
 
     @Provides
     @Singleton
@@ -20,6 +20,6 @@ object AppModule {
         Room.databaseBuilder(app, AppDatabase::class.java, "app_db").build()
 
     @Provides
-    fun provideUserDao(db: AppDatabase): ManageAppDao = db.appDao()
+    fun provideAppListDao(db: AppDatabase): ManageAppDao = db.appDao()
 
 }

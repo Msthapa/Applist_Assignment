@@ -24,5 +24,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        viewModel.updateAppList()
+
     }
 }
