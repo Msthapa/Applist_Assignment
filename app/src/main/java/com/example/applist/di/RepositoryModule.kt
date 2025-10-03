@@ -21,5 +21,5 @@ object RepositoryModule {
         api: AppsApiService,
         dao: ManageAppDao,
         glide: RequestManager
-    ): Repository = RepositoryImpl(api, dao, glide)
+    ): Repository = RepositoryImpl(api, dao)
 }

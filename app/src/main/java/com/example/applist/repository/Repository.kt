@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 interface Repository {
 
-    suspend fun updateAppList()
+    suspend fun updateAppList(forceRefresh: Boolean)
 
     fun getAppList() : StateFlow<List<AppDetailItem>>
 
