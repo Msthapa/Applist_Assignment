@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/applistFragment">
+
+    <fragment
+        android:id="@+id/applistFragment"
+        android:name="com.example.applist.view.ApplistFragment"
+        android:label="First Fragment">
+
+        <!--<action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/" />-->
+
+    </fragment>
+
+</navigation>
